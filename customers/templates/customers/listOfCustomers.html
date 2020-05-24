@@ -1,0 +1,27 @@
+{%extends 'header.html'%}
+
+{%block content%}
+<table>
+  <tr>
+    <th>ИД</th>
+    <th>Имя</th>
+    <th>Фамилия</th>
+    <th>Номер телефона</th>
+  </tr>
+
+{% for customer in customers %}
+    <tr>
+      <td>{{customer.id}}</td>
+      <td>{{customer.firstname}}</td>
+      <td>{{customer.lastname}}</td>
+      <td>{{customer.phone}}</td>
+      <td> <a href="customers/{{customer.id}}"><img class="detail" src="{{ url_for('static',filename='img/det.png')}}" alt=""></a> </td>
+      <td> <a href="customers/{{customer.id}}/edit"><img class="detail" src="{{ url_for('static',filename='img/edit.png')}}" alt=""></a> </td>
+      <td> <a href="customers/{{customer.id}}/delete"><img class="detail" src="{{ url_for('static',filename='img/del.png')}}" alt=""></a> </td>
+
+    </tr>
+{% endfor %}
+</table>
+
+
+{%endblock%}

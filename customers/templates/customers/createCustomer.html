@@ -1,0 +1,22 @@
+{%extends 'header.html'%}
+
+{%block content%}
+<!--<form action="{{url_for('customers.createCustomer')}}" method="post">
+
+    {% for field in form %}
+    <div class="field">
+      {{ field.label() }}
+      {{ field() }}
+    </div>
+
+    {% endfor %}
+
+</form>-->
+<form method="post">
+  <input type="text" name="firstname" id=firstname placeholder="Имя"><br>
+  <input type="text" name="lastname" id=lastname placeholder="Фамилия"><br>
+  <input type="text" name="phone" id=phone placeholder="Номер теефона"><br>
+  <input type="submit" value="Создать пользователя">
+
+</form>
+{%endblock%}

@@ -1,0 +1,12 @@
+{% extends "header.html" %}
+{% block content %}
+
+
+<br>
+
+<p><a  class="btn" href="{{url_for('customers.listOfCustomers')}}">Посмотреть всех клиентов</a></p>
+<br>
+<p><a class="btn" href="{{url_for('customers.createCustomer')}}">Создать клиента</a></p>
+
+
+{% endblock %}
