@@ -2,9 +2,9 @@
 {% block content %}
 
 <form  method="post">
-  <input type="text" name="title" id=title placeholder="Название товара">
-  <input type="text" name="description" id=desription placeholder="Описание товара">
-  <input type="text" name="quantity" id =quantity placeholder="Колличество на скаде">
+  <input type="text" name="title" id=title placeholder="Название товара" required>
+  <input type="text" name="description" id=desription placeholder="Описание товара" required>
+  <input type="number" min = "0" name="quantity" id =quantity placeholder="Колличество на скаде" required>
 <!--  <input type="text" name="article_number"  id=article_number placeholder="Артикул товара">-->
   <input type="submit" value="Добавить товар">
 
