@@ -1,9 +1,9 @@
 {% extends "header.html" %}
 {% block content %}
 <br>
-<p><a  class="btn" href="#">Открыть склад</a></p>
+<p><a  class="btn" href="{{url_for('products.listOfProducts')}}">Открыть склад</a></p>
 <br>
-<p><a class="btn" href="#">Создать карточку товара</a></p>
+<p><a class="btn" href="{{url_for('products.addProduct')}}">Создать карточку товара</a></p>
 
 
 {% endblock %}
