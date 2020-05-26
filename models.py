@@ -21,3 +21,14 @@ class customer(db.Model):
 
     def generate_slug(self):
             self.slug = slugify(self.lastname,self.firstname)
+
+
+class product(db.Model):
+    id = db.Column(db.Integer,primary_key=True, autoincrement=True)
+    title = db.Column(db.String(50))
+    description = db.Column(db.String(150))
+    quantity = db.Column(db.Integer)
+    article_number = db.Column(db.Integer)
+
+    def __init__(self, *args, **kwarg):
+        super(product,self).__init__(*args, **kwarg)
