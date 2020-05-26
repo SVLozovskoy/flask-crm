@@ -21,7 +21,7 @@ def addProduct():
         db.session.add(newProduct)
         db.session.commit()
 
-        redirect(url_for('products.index'))
+        return redirect(url_for('products.index'))
     else:
         form = ProductForm()
         return render_template('products/addProduct.html', form = form)
@@ -29,5 +29,5 @@ def addProduct():
 
 @products.route('/listOfProducts')
 def listOfProducts():
-    products = products.query.all()
+    products = pd.query.all()
     return render_template('products/listOfProducts.html', products = products)
