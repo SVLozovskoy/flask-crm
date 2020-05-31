@@ -6,10 +6,19 @@ from app import db
 customers = Blueprint('customers', __name__, template_folder='templates')
 
 
-@customers.route('/')
+@customers.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == 'POST':
+        lname = request.form['search']
+        return redirect(url_for('customers.searsh' ,lname=lname))
+    else:
+        return render_template('customers/index.html')
 
-    return render_template('customers/index.html')
+
+
+
+
+
 
 @customers.route('/listOfCustomers')
 def listOfCustomers():
@@ -31,7 +40,7 @@ def createCustomer():
         form = CustomerForm()
         return render_template('customers/createCustomer.html', form=form)
 
-@customers.route('/customers/<int:id>')
+@customers.route('/customers/<int:id>', methods = ['GET', 'POST'])
 def customerDetial(id):
     currentCustomer = customer.query.get(id)
     return render_template('customers/detail.html', customer=currentCustomer)
@@ -50,9 +59,19 @@ def editCustomer(id):
         currentCustomer.firstname = request.form['firstname']
         currentCustomer.lastname = request.form['lastname']
         currentCustomer.phone = request.form['phone']
- 
+
         db.session.commit()
         return redirect(url_for('customers.index'))
     else:
 
         return render_template('customers/editCustomer.html', customer=currentCustomer)
+
+
+@customers.route('/search/<lname>', methods=['GET', 'POST'])
+def searsh(lname):
+
+        list = db.session.query(customer).filter(customer.lastname.like(lname)).all()
+        if len(list) == 0:
+            return render_template('customers/finder0.html', lname = lname)
+        else:
+            return render_template('customers/finder.html', list = list, lname = lname)

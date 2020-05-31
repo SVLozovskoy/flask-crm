@@ -1,19 +1,61 @@
+
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/ccstyle.css')}}"/>
+<html lang="en">
+<head>
+  <title>MyCRM</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
-  </head>
-  <body>
-    <h3>Представьте, что это CRM</h3>
-    <div class="menu">
-      <a href="/"> <img class="home" src="{{ url_for('static',filename='img/home.png')}}" alt=""> </a>
-      <a href="{{url_for('customers.index')}}">Клиенты</a>
-      <a href="{{url_for('products.index')}}">Товары</a>
+</head>
+<body>
+  <br>
 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   <a class="navbar-brand" href="{{url_for('index')}}"> <img src="{{ url_for('static',filename='img/home.png')}}" alt=""> </a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
 
-    </div>
-    <hr>
-    {% block content %} {% endblock %}
-  </body>
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     <ul class="navbar-nav mr-auto">
+       <li class="nav-item">
+         <a class="nav-link" href="{{url_for('customers.index')}}">Клиенты</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="{{url_for('products.index')}}">Товары</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link" href="#">Продажи</a>
+       </li>
+
+       <li class="nav-item">
+         <a class="nav-link disabled" href="#">Поддержка</a>
+       </li>
+     </ul>
+     <form class="form-inline my-2 my-lg-0" method="POST">
+       <input class="form-control mr-sm-2" name = "search" type="search" placeholder="Фамилия клиента" aria-label="Search">
+       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+     </form>
+   </div>
+ </nav>
+
+ <style media="screen">
+   .detail{
+     width: 25px;
+     height: 25px;
+   }
+   .mycontainer{
+     margin-left: 50px;
+     margin-top: 50px;
+     width: 400px;
+   }
+ </style>
+
+ {% block content %} {% endblock %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</body>
 </html>

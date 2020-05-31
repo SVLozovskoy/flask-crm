@@ -1,6 +1,8 @@
 {%extends 'header.html'%}
 
 {%block content%}
+<br>
+<h3>По вашему запросу "{{lname}}" были найдены результаты:</h3>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -13,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-{% for item in customers %}
+{% for item in list %}
 
     <tr>
       <td>{{item.id}}</td>

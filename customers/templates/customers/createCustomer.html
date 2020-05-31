@@ -2,11 +2,26 @@
 
 {%block content%}
 
-<form method="post">
-  <input type="text" name="firstname" id=firstname placeholder="Имя" required><br>
-  <input type="text" name="lastname" id=lastname placeholder="Фамилия" required><br>
-  <input type="text" name="phone" id=phone placeholder="Номер теефона" required><br>
-  <input type="submit" value="Создать пользователя">
 
-</form>
+
+<div class="mycontainer">
+  <form method="post" autocomplete="off">
+    <div class="form-group">
+
+      <input name="firstname" type="text" class="form-control" id="firstname" placeholder="Имя">
+    </div>
+    <div class="form-group">
+
+      <input name="lastname" type="text" class="form-control" id="lastname" placeholder="Фамилия">
+    </div>
+    <div class="form-group">
+
+      <input name="phone" type="text" class="form-control" id="phone" placeholder="Номер телефона">
+    </div>
+
+
+    <button type="submit" class="btn btn-dark">Создать клиента</button>
+  </form>
+
+</div>
 {%endblock%}

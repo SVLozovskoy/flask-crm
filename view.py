@@ -1,11 +1,12 @@
 from app import app
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,url_for, redirect
+from app import db
 
 
-
-@app.route('/')
+@app.route('/', methods=['POST', 'get'])
 def index():
-    return render_template('index.html')
-
-
- 
+    if request.method == 'POST':
+        lname = request.form['search']
+        return redirect(url_for('customers.searsh' ,lname=lname))
+    else:
+        return render_template('index.html')

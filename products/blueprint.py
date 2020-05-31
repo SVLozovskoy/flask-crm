@@ -5,9 +5,13 @@ from .forms import ProductForm
 from app import db
 products = Blueprint('products', __name__, template_folder='templates')
 
-@products.route('/')
+@products.route('/', methods=['GET','POST'])
 def index():
-    return render_template('products/index.html')
+    if request.method == 'POST':
+        lname = request.form['search']
+        return redirect(url_for('customers.searsh' ,lname=lname))
+    else:
+        return render_template('products/index.html')
 
 @products.route('/addProduct', methods = ['GET','POST'])
 def addProduct():
