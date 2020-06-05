@@ -17,7 +17,7 @@ class customer(db.Model):
         super(customer, self).__init__(*args, **kwarg)
 
     def __repr__(self):
-        return '< customer id: {} , firstname: {}, lastname: {}>'.format(self.id, self.firstname, self.lastname)
+        return 'id: {}, {}, {}'.format(self.id, self.firstname, self.lastname)
 
 
 class product(db.Model):
@@ -31,11 +31,15 @@ class product(db.Model):
     def __init__(self, *args, **kwarg):
         super(product,self).__init__(*args, **kwarg)
 
+    def __repr__(self):
+        return '{}, {}'.format(self.article_number, self.title)
+
 
 class sale(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey(customer.id))
     product_id = db.Column(db.Integer, db.ForeignKey(product.id))
+
 
     def __init__(self, *args, **kwarg):
         super(sale,self).__init__(*args, **kwarg)

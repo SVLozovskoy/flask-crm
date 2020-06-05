@@ -1,0 +1,31 @@
+{% extends "header.html" %}
+{% block content %}
+
+
+<h5>тут будет табличка с продажами</h5>
+<form method="post">
+
+
+<p><input type="search" list="character" name="f1">
+  <datalist id="character">
+  {% for item in customersList %}
+      <option value="{{ item }}"></option>
+  {% endfor %}
+  </datalist>
+</p>
+
+<br>
+<hr>
+
+<p><input type="search" list="items" name="s2">
+  <datalist id="items">
+  {% for product in productList %}
+      <option value="{{ product }}"></option>
+  {% endfor %}
+  </datalist>
+</p>
+
+<input type="submit" value="оформить">
+
+</form>
+{%endblock%}
